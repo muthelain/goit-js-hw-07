@@ -12,13 +12,14 @@ const items = galleryItems.map(item => {
 </a>
 </div>`}).join("");
 
+const instance = basicLightbox.create(`<img width="1140" height="720" src="#">`, {onShow: (instance) => {window.addEventListener('keydown', onEscPress)},
+onClose: (instance) => {window.removeEventListener('keydown', onEscPress)}});
+
 const galleryBox = document.querySelector('.gallery');
 galleryBox.innerHTML = items;
 
 galleryBox.addEventListener('click', onLinkClick);
 
-const instance = basicLightbox.create(`<img width="1140" height="720" src="#">`, {onShow: (instance) => {window.addEventListener('keydown', onEscPress)},
-onClose: (instance) => {window.removeEventListener('keydown', onEscPress)}});
 
 function onLinkClick(event) {
   event.preventDefault();
